@@ -61,7 +61,7 @@ public class Carro extends DomainDB {
     	return null;
     }
     
-    public List<umCarro> findAll(String filial, String grupo) {
+    public List<umCarro> findAll(String filial, String grupo, String dataRetirada, String dataDevolucao) {
     	
     	Filial filialDao = new Filial();
     	umFilial uF = filialDao.find( filial );
@@ -79,8 +79,8 @@ public class Carro extends DomainDB {
 			//StringBuffer sql = new StringBuffer("select * from tbModelo where grupoId=" + uG.getGrupoId() + " and modeloId in (select modeloId from tbCarro where filialId=" + uF.getFilialId() + ")");
 			StringBuffer sql = new StringBuffer("select * from tbCarro where filialId=" + uF.getFilialId() 
 												+ " and modeloId in (select modeloId from tbModelo where grupoId=" + uG.getGrupoId() 
-												+ " and carroId not in ( select carroId from tbReserva )" 
-												+ " and carroId not in ( select carroId from tbLocacao ))");
+												+ " and carroId not in ( select carroId from tbReserva where date(reservaDataDevolucao)>=now())" 
+												+ " and carroId not in ( select carroId from tbLocacao where date(locacaoDataDevolucao)>=now()))");
 
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
             ResultSet rs = pstmt.executeQuery();

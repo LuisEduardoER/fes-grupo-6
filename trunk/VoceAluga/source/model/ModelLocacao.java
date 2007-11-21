@@ -60,9 +60,9 @@ public class ModelLocacao extends DomainDB {
 		
     }
     
-    public List<umGrupo> getListaGruposDisponíveis( int id_filial ) {
+    public List<umGrupo> getListaGruposDisponíveis( int id_filial, String dataRetirada, String dataDevolucao ) {
     	Grupo grupoDao = new Grupo();
-    	List<umGrupo> l = grupoDao.findAll(id_filial);
+    	List<umGrupo> l = grupoDao.findAll(id_filial, dataRetirada, dataDevolucao);
     	
     	return l;
     }
@@ -74,9 +74,9 @@ public class ModelLocacao extends DomainDB {
     	return l;
     }
     
-    public List<umCarro> getListaCarrosDisponiveis(String filial, String grupo) {
+    public List<umCarro> getListaCarrosDisponiveis(String filial, String grupo, String dataRetirada, String dataDevolucao) {
     	Carro carroDao = new Carro();
-    	List<umCarro> l = carroDao.findAll(filial, grupo);
+    	List<umCarro> l = carroDao.findAll(filial, grupo, dataRetirada, dataDevolucao);
     	
     	return l;
     }

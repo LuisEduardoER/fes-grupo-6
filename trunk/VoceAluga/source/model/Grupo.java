@@ -40,7 +40,7 @@ public class Grupo extends DomainDB {
     	return null;
     }
     
-    public List<umGrupo> findAll( int id_filial ) {
+    public List<umGrupo> findAll( int id_filial, String dataRetirada, String dataDevolucao ) {
     	List result = new ArrayList();
     	
 		try {
@@ -51,8 +51,8 @@ public class Grupo extends DomainDB {
 												+ " where grupoId in (select grupoId from tbModelo" 
 													+ " where modeloId in (select modeloId from tbCarro" 
 														+ " where filialId="+ id_filial 
-															+ " and carroId not in ( select carroId from tbReserva )" 
-															+ " and carroId not in ( select carroId from tbLocacao )))");
+															+ " and carroId not in ( select carroId from tbReserva where date(reservaDataDevolucao)>=now())" 
+															+ " and carroId not in ( select carroId from tbLocacao where date(locacaoDataDevolucao)>=now())))");
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
             ResultSet rs = pstmt.executeQuery();
 

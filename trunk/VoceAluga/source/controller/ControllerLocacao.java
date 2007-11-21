@@ -126,7 +126,7 @@ public class ControllerLocacao implements ActionListener, CaretListener, FocusLi
 		viewLocacao.getCampoDataDevolucao().setText(DateFormat.getDateInstance().format(amanha));
 		
         // TODO: Pegar a filial do usuário logado. O sistema atual não implementa login
-		for (umGrupo g : modelLocacao.getListaGruposDisponíveis(1))
+		for (umGrupo g : modelLocacao.getListaGruposDisponíveis(1,viewLocacao.getCampoDataRetirada().getText(),viewLocacao.getCampoDataDevolucao().getText()))
 		{
 			viewLocacao.getCampoGrupo().addItem(g.getGrupoNome());
 		}
@@ -142,7 +142,7 @@ public class ControllerLocacao implements ActionListener, CaretListener, FocusLi
 		viewLocacao.getCampoFilialDevolucao().setSelectedItem("EU Rent Matriz");
 
 		viewLocacao.getCampoCarro().removeAllItems();
-		for (umCarro c : modelLocacao.getListaCarrosDisponiveis("EU Rent Matriz", (String)viewLocacao.getCampoGrupo().getSelectedItem()))
+		for (umCarro c : modelLocacao.getListaCarrosDisponiveis("EU Rent Matriz", (String)viewLocacao.getCampoGrupo().getSelectedItem(),viewLocacao.getCampoDataRetirada().getText(), viewLocacao.getCampoDataDevolucao().getText()))
 		{
 			viewLocacao.getCampoCarro().addItem(c.getCarroId() + " : " + c.getCarroModelo() + " : " + c.getCarroPlaca());
 		}
@@ -337,7 +337,7 @@ public class ControllerLocacao implements ActionListener, CaretListener, FocusLi
 			viewLocacao.getCampoValorDiaria().setText("R$" + Double.toString(verificaValorDiariaGrupo((String)viewLocacao.getCampoGrupo().getSelectedItem())));
 			viewLocacao.getCampoCarro().removeAllItems();
 			// TODO: Só aceita a filial EU Rent Matriz. Mudar qd for implementado o sistema de login
-			for (umCarro c : modelLocacao.getListaCarrosDisponiveis("EU Rent Matriz", (String)viewLocacao.getCampoGrupo().getSelectedItem()))
+			for (umCarro c : modelLocacao.getListaCarrosDisponiveis("EU Rent Matriz", (String)viewLocacao.getCampoGrupo().getSelectedItem(), viewLocacao.getCampoDataRetirada().getText(), viewLocacao.getCampoDataDevolucao().getText() ))
 			{
 				viewLocacao.getCampoCarro().addItem(c.getCarroId() + " : " + c.getCarroModelo() + " : " + c.getCarroPlaca());
 			}
