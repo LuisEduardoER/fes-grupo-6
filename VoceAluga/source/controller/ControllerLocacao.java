@@ -306,6 +306,11 @@ public class ControllerLocacao implements ActionListener, CaretListener, FocusLi
 			Cliente clienteDao = new Cliente();
 			umCliente uC = clienteDao.find((String)viewLocacao.getCampoCPF().getText());
 			
+			if( uC == null ) {
+				JOptionPane.showMessageDialog(null, "Cliente Inexistente", "Confirmação",1);
+				return;
+			}
+			
 			ListaNegra listaNegraDao = new ListaNegra();
 			umListaNegra uLN = listaNegraDao.find(uC.getClienteId());
 			
