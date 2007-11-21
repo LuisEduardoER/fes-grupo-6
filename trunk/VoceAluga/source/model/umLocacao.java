@@ -2,7 +2,7 @@
  * CÓDIGO GERADO PELO RAPDIS
  * www.geti.dcc.ufrj.br
  * Data da geração 21/11/2007
- * Hora da geração 02:18 AM
+ * Hora da geração 02:11 AM
  * 
  * Nome Voce Aluga
  * E-mail Seu Email
@@ -11,20 +11,20 @@
  */
 package model;
 
-public class umReserva{
+public class umLocacao{
 
     /**
      * Propriedade fixa e necessaria para identificar o registro
      */
     private int oid;
 
-    private int reservaId;
+    private int locacaoId;
 
-    private String reservaDataRetirada;
+    private String locacaoDataRetirada;
 
-    private String reservaDataDevolucao;
+    private String locacaoDataDevolucao;
 
-    private String reservaValor;
+    private float locacaoValor;
 
     private int modeloId;
 
@@ -36,7 +36,7 @@ public class umReserva{
     /**
      * Construtor dessa classe
      */
-    public umReserva(){
+    public umLocacao(){
     }
 
     /**
@@ -54,65 +54,71 @@ public class umReserva{
     }
 
     /**
-     * @return ReservaId
+     * @return LocacaoId
      */
-    public int getReservaId() {
-        return reservaId;
+    public int getLocacaoId() {
+        return locacaoId;
     }
 
     /**
-     * @param umReservaId
+     * @param umLocacaoId
      */
-    public void setReservaId(int umReservaId) {
-        reservaId = umReservaId;
+    public void setLocacaoId(int umLocacaoId) {
+        locacaoId = umLocacaoId;
     }
     /**
-     * @param umReservaId
+     * @param umLocacaoId
      */
-    public void setReservaId(String umReservaId) {
-        reservaId = Integer.parseInt(umReservaId);
-    }
-
-    /**
-     * @return ReservaDataRetirada
-     */
-    public String getReservaDataRetirada() {
-        return reservaDataRetirada;
+    public void setLocacaoId(String umLocacaoId) {
+        locacaoId = Integer.parseInt(umLocacaoId);
     }
 
     /**
-     * @param umReservaDataRetirada
+     * @return LocacaoDataRetirada
      */
-    public void setReservaDataRetirada(String umReservaDataRetirada) {
-        reservaDataRetirada = umReservaDataRetirada;
+    public String getLocacaoDataRetirada() {
+        return locacaoDataRetirada;
     }
 
     /**
-     * @return ReservaDataDevolucao
+     * @param umLocacaoDataRetirada
      */
-    public String getReservaDataDevolucao() {
-        return reservaDataDevolucao;
+    public void setLocacaoDataRetirada(String umLocacaoDataRetirada) {
+        locacaoDataRetirada = umLocacaoDataRetirada;
     }
 
     /**
-     * @param umReservaDataDevolucao
+     * @return LocacaoDataDevolucao
      */
-    public void setReservaDataDevolucao(String umReservaDataDevolucao) {
-        reservaDataDevolucao = umReservaDataDevolucao;
+    public String getLocacaoDataDevolucao() {
+        return locacaoDataDevolucao;
     }
 
     /**
-     * @return ReservaValor
+     * @param umLocacaoDataDevolucao
      */
-    public String getReservaValor() {
-        return reservaValor;
+    public void setLocacaoDataDevolucao(String umLocacaoDataDevolucao) {
+        locacaoDataDevolucao = umLocacaoDataDevolucao;
     }
 
     /**
-     * @param umReservaValor
+     * @return LocacaoValor
      */
-    public void setReservaValor(String umReservaValor) {
-        reservaValor = umReservaValor;
+    public float getLocacaoValor() {
+        return locacaoValor;
+    }
+
+    /**
+     * @param umLocacaoValor
+     */
+    public void setLocacaoValor(float umLocacaoValor) {
+        locacaoValor = umLocacaoValor;
+    }
+    /**
+     * @param umLocacaoValor
+     */
+    public void setLocacaoValor(String umLocacaoValor) {
+        locacaoValor = Float.parseFloat(umLocacaoValor);
     }
 
     /**

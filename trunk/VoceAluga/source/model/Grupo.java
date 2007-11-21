@@ -20,68 +20,39 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carro extends DomainDB {
+public class Grupo extends DomainDB {
 
     /**
      * Construtor dessa classe
      */
-    public Carro(){
-    }
-
-    public boolean atualizaCarro(int idCarro, int idFilialAtual) {
-    	
-    	umCarro uC = find(idCarro);
-		uC.setFilialId(idFilialAtual);
-    	return update(uC);    	
+    public Grupo(){
     }
     
-    public umCarro find(int idCarro) {
-    	
-    	List<umCarro> l = findAll(new umCarro());
+    // TODO: Fazer um sql para isso depois
+    public umGrupo find(String grupo) {
+    	List<umGrupo> l = findAll(new umGrupo());
     	l.remove(0);
-    	for( umCarro c : l ) {
-    		if( c.getCarroId() == idCarro ) {
-    	
-    			return c;
+    	for( umGrupo g : l ) {
+    		if( g.getGrupoNome().equals(grupo) ) {
+    			return g;
     		}
       	}
     	return null;
     }
     
-    public umCarro find(String modelo) {
-    	
-    	List<umCarro> l = findAll(new umCarro());
-    	l.remove(0);
-    	for( umCarro c : l ) {
-    		if( c.getCarroModelo() == modelo ) {
-    			
-    			return c;
-    		}
-      	}
-    	return null;
-    }
-    
-    public List<umCarro> findAll(String filial, String grupo) {
-    	
-    	Filial filialDao = new Filial();
-    	umFilial uF = filialDao.find( filial );
-    	
-    	Grupo grupoDao = new Grupo();
-    	umGrupo uG = grupoDao.find(grupo);
-    	
-    	
+    public List<umGrupo> findAll( int id_filial ) {
     	List result = new ArrayList();
     	
 		try {
-			getNomeClasse(new umCarro());
+			getNomeClasse(new umGrupo());
 	
-			//StringBuffer sql = new StringBuffer("select * from tbCarro where filialId=" + uF.getFilialId() + " and modeloId in (select modeloId from tbModelo where grupoId=" + uG.getGrupoId() + ")");
-			//StringBuffer sql = new StringBuffer("select * from tbModelo where grupoId=" + uG.getGrupoId() + " and modeloId in (select modeloId from tbCarro where filialId=" + uF.getFilialId() + ")");
-			StringBuffer sql = new StringBuffer("select * from tbCarro where filialId=" + uF.getFilialId() 
-												+ " and modeloId in (select modeloId from tbModelo where grupoId=" + uG.getGrupoId() 
-												+ " and carroId not in ( select carroId from tbReserva )" 
-												+ " and carroId not in ( select carroId from tbLocacao ))");
-
+	//		StringBuffer sql = new StringBuffer("select * from tbGrupo where grupoId in (select grupoId from tbModelo where modeloId in (select modeloId from tbCarro where filialId="+ id_filial +"))");
+			StringBuffer sql = new StringBuffer("select * from tbGrupo" 
+												+ " where grupoId in (select grupoId from tbModelo" 
+													+ " where modeloId in (select modeloId from tbCarro" 
+														+ " where filialId="+ id_filial 
+															+ " and carroId not in ( select carroId from tbReserva )" 
+															+ " and carroId not in ( select carroId from tbLocacao )))");
 			PreparedStatement pstmt = conn.prepareStatement(sql.toString());
             ResultSet rs = pstmt.executeQuery();
 
@@ -98,7 +69,7 @@ public class Carro extends DomainDB {
 
             while(rs.next()){
 
-                Object temp = new umCarro();
+                Object temp = new umGrupo();
                 
                 Method[] metodos = classe.getMethods();
                 Field[] atributos = classe.getDeclaredFields();
@@ -142,5 +113,4 @@ public class Carro extends DomainDB {
 
     return result;
     }
-
 }

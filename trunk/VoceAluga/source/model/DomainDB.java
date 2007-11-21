@@ -1,8 +1,8 @@
 /*
  * CÓDIGO GERADO PELO RAPDIS
  * www.geti.dcc.ufrj.br
- * Data da geração 24/10/2007
- * Hora da geração 09:11 AM
+ * Data da geração 20/11/2007
+ * Hora da geração 05:16 PM
  * 
  * Nome Voce Aluga
  * E-mail Seu Email
@@ -11,8 +11,14 @@
  */
 package model;
 
-import java.lang.reflect.*;
-import java.sql.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +27,9 @@ import java.util.List;
  */
 public class DomainDB {
 
-    private Connection conn = null;
+    protected Connection conn = null;
 
-    private Class classe = null;
+    protected Class classe = null;
 
  	/**
  	 * Construtor dessa classe
@@ -123,6 +129,9 @@ public class DomainDB {
 
             sql.append(" WHERE OID = ");
 
+                if(obj instanceof umGrupo){
+                    sql.append(((umGrupo)obj).getOid());
+                }
                 if(obj instanceof umModelo){
                     sql.append(((umModelo)obj).getOid());
                 }
@@ -147,11 +156,14 @@ public class DomainDB {
                 if(obj instanceof umListaNegra){
                     sql.append(((umListaNegra)obj).getOid());
                 }
-                if(obj instanceof umGrupos){
-                    sql.append(((umGrupos)obj).getOid());
+                if(obj instanceof umLocacao){
+                    sql.append(((umLocacao)obj).getOid());
                 }
                 if(obj instanceof umModelReserva){
                     sql.append(((umModelReserva)obj).getOid());
+                }
+                if(obj instanceof umModelLocacao){
+                    sql.append(((umModelLocacao)obj).getOid());
                 }
 
             PreparedStatement pstmt = conn.prepareStatement(sql.toString());
@@ -172,6 +184,9 @@ public class DomainDB {
         Class classe = null;
 
         try{
+                if(obj instanceof umGrupo){
+                    classe = ((umGrupo)obj).getClass();
+                }
                 if(obj instanceof umModelo){
                     classe = ((umModelo)obj).getClass();
                 }
@@ -196,11 +211,14 @@ public class DomainDB {
                 if(obj instanceof umListaNegra){
                     classe = ((umListaNegra)obj).getClass();
                 }
-                if(obj instanceof umGrupos){
-                    classe = ((umGrupos)obj).getClass();
+                if(obj instanceof umLocacao){
+                    classe = ((umLocacao)obj).getClass();
                 }
                 if(obj instanceof umModelReserva){
                     classe = ((umModelReserva)obj).getClass();
+                }
+                if(obj instanceof umModelLocacao){
+                    classe = ((umModelLocacao)obj).getClass();
                 }
 
             StringBuffer sql = new StringBuffer("UPDATE ");
@@ -234,6 +252,9 @@ public class DomainDB {
 
             sql.append(" WHERE OID = ");
 
+                if(obj instanceof umGrupo){
+                    sql.append(((umGrupo)obj).getOid());
+                }
                 if(obj instanceof umModelo){
                     sql.append(((umModelo)obj).getOid());
                 }
@@ -258,14 +279,18 @@ public class DomainDB {
                 if(obj instanceof umListaNegra){
                     sql.append(((umListaNegra)obj).getOid());
                 }
-                if(obj instanceof umGrupos){
-                    sql.append(((umGrupos)obj).getOid());
+                if(obj instanceof umLocacao){
+                    sql.append(((umLocacao)obj).getOid());
                 }
                 if(obj instanceof umModelReserva){
                     sql.append(((umModelReserva)obj).getOid());
                 }
+                if(obj instanceof umModelLocacao){
+                    sql.append(((umModelLocacao)obj).getOid());
+                }
 
 
+               
             PreparedStatement pstmt = conn.prepareStatement(sql.toString());
             pstmt.executeUpdate();
 
@@ -310,6 +335,9 @@ public class DomainDB {
 
                 Object temp = null;
 
+                if(obj instanceof umGrupo){
+                    temp = new umGrupo();
+                }
                 if(obj instanceof umModelo){
                     temp = new umModelo();
                 }
@@ -334,11 +362,14 @@ public class DomainDB {
                 if(obj instanceof umListaNegra){
                     temp = new umListaNegra();
                 }
-                if(obj instanceof umGrupos){
-                    temp = new umGrupos();
+                if(obj instanceof umLocacao){
+                    temp = new umLocacao();
                 }
                 if(obj instanceof umModelReserva){
                     temp = new umModelReserva();
+                }
+                if(obj instanceof umModelLocacao){
+                    temp = new umModelLocacao();
                 }
 
                 Method[] metodos = classe.getMethods();
@@ -369,7 +400,7 @@ public class DomainDB {
                 }
 
                 result.add(temp);
-        }
+            }
         	pstmt.close();
 			rs.close();
 
@@ -392,6 +423,9 @@ public class DomainDB {
 
     public String getNomeClasse(Object obj){
 
+                if(obj instanceof umGrupo){
+                    this.classe = ((umGrupo)obj).getClass();
+                }
                 if(obj instanceof umModelo){
                     this.classe = ((umModelo)obj).getClass();
                 }
@@ -416,11 +450,14 @@ public class DomainDB {
                 if(obj instanceof umListaNegra){
                     this.classe = ((umListaNegra)obj).getClass();
                 }
-                if(obj instanceof umGrupos){
-                    this.classe = ((umGrupos)obj).getClass();
+                if(obj instanceof umLocacao){
+                    this.classe = ((umLocacao)obj).getClass();
                 }
                 if(obj instanceof umModelReserva){
                     this.classe = ((umModelReserva)obj).getClass();
+                }
+                if(obj instanceof umModelLocacao){
+                    this.classe = ((umModelLocacao)obj).getClass();
                 }
 
         String nomeClasse = classe.getName();
@@ -498,3 +535,4 @@ public class DomainDB {
 		return result;
 	}
 }
+

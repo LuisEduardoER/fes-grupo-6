@@ -1,8 +1,8 @@
 /*
  * CÓDIGO GERADO PELO RAPDIS
  * www.geti.dcc.ufrj.br
- * Data da geração 24/10/2007
- * Hora da geração 09:11 AM
+ * Data da geração 20/11/2007
+ * Hora da geração 05:16 PM
  * 
  * Nome Voce Aluga
  * E-mail Seu Email
@@ -11,6 +11,8 @@
  */
 package model;
 
+import java.util.List;
+
 public class Cliente extends DomainDB {
 
     /**
@@ -18,6 +20,17 @@ public class Cliente extends DomainDB {
      */
     public Cliente(){
     }
-
+    
+    // TODO: Fazer um sql para isso depois
+    public umCliente find(String clienteCpf) {
+    	List<umCliente> l = findAll(new umCliente());
+    	l.remove(0);
+    	for( umCliente c : l ) {
+    		if( c.getClienteCpf().equals(clienteCpf) ) {
+    			return c;
+    		}
+      	}
+    	return null;
+    }
 
 }

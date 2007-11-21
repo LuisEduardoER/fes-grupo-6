@@ -1,2 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<classpath><classpathentry kind="src" path="source"/><classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/><classpathentry kind="lib" path="lib/Paradox_JDBC30.jar"/><classpathentry kind="lib" path="lib/swing-layout-1.0.jar"/><classpathentry kind="output" path="output"/></classpath>
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="source"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/Paradox_JDBC30.jar"/>
+	<classpathentry kind="lib" path="lib/swing-layout-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/forms.jar" sourcepath="lib/forms-src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/D:/Documents%20and%20Settings/brleite/workspace/TrabalhoFinal/lib/forms-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="output"/>
+</classpath>

@@ -1,8 +1,8 @@
 /*
  * CÓDIGO GERADO PELO RAPDIS
  * www.geti.dcc.ufrj.br
- * Data da geração 24/10/2007
- * Hora da geração 09:11 AM
+ * Data da geração 20/11/2007
+ * Hora da geração 05:16 PM
  * 
  * Nome Voce Aluga
  * E-mail Seu Email
@@ -16,6 +16,7 @@ import java.util.List;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import javax.swing.JFrame;
+import model.umGrupo;
 import model.umModelo;
 import model.umCarro;
 import model.umFilial;
@@ -24,8 +25,9 @@ import model.umReserva;
 import model.umCliente;
 import model.umCartaoDeCredito;
 import model.umListaNegra;
-import model.umGrupos;
+import model.umLocacao;
 import model.umModelReserva;
+import model.umModelLocacao;
 
 public class Maintenance extends JFrame {
 
@@ -246,6 +248,8 @@ public class Maintenance extends JFrame {
             DataTableModel modelo = (DataTableModel) dados.getModel();
             String valor = (String) modelo.getValueAt(dados.getSelectedRow(), dados.getSelectedColumn());
 
+                if(instancia instanceof umGrupo)
+                    controle.atualizar(coluna, valor, (umGrupo) lista.get(dados.getSelectedRow()+1));
                 if(instancia instanceof umModelo)
                     controle.atualizar(coluna, valor, (umModelo) lista.get(dados.getSelectedRow()+1));
                 if(instancia instanceof umCarro)
@@ -262,10 +266,12 @@ public class Maintenance extends JFrame {
                     controle.atualizar(coluna, valor, (umCartaoDeCredito) lista.get(dados.getSelectedRow()+1));
                 if(instancia instanceof umListaNegra)
                     controle.atualizar(coluna, valor, (umListaNegra) lista.get(dados.getSelectedRow()+1));
-                if(instancia instanceof umGrupos)
-                    controle.atualizar(coluna, valor, (umGrupos) lista.get(dados.getSelectedRow()+1));
+                if(instancia instanceof umLocacao)
+                    controle.atualizar(coluna, valor, (umLocacao) lista.get(dados.getSelectedRow()+1));
                 if(instancia instanceof umModelReserva)
                     controle.atualizar(coluna, valor, (umModelReserva) lista.get(dados.getSelectedRow()+1));
+                if(instancia instanceof umModelLocacao)
+                    controle.atualizar(coluna, valor, (umModelLocacao) lista.get(dados.getSelectedRow()+1));
 
         }
     }
@@ -282,6 +288,8 @@ public class Maintenance extends JFrame {
 
             boolean inclui = false;
 
+                if(instancia instanceof umGrupo)
+                    obj = new umGrupo();
                 if(instancia instanceof umModelo)
                     obj = new umModelo();
                 if(instancia instanceof umCarro)
@@ -298,10 +306,12 @@ public class Maintenance extends JFrame {
                     obj = new umCartaoDeCredito();
                 if(instancia instanceof umListaNegra)
                     obj = new umListaNegra();
-                if(instancia instanceof umGrupos)
-                    obj = new umGrupos();
+                if(instancia instanceof umLocacao)
+                    obj = new umLocacao();
                 if(instancia instanceof umModelReserva)
                     obj = new umModelReserva();
+                if(instancia instanceof umModelLocacao)
+                    obj = new umModelLocacao();
 
             inclui = controle.incluir(obj);
             if(inclui){
@@ -319,6 +329,8 @@ public class Maintenance extends JFrame {
             DataTableModel modelo = (DataTableModel) dados.getModel();
             boolean exclui = false;
 
+                if(instancia instanceof umGrupo)
+                    exclui = controle.excluir((umGrupo) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
                 if(instancia instanceof umModelo)
                     exclui = controle.excluir((umModelo) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
                 if(instancia instanceof umCarro)
@@ -335,10 +347,12 @@ public class Maintenance extends JFrame {
                     exclui = controle.excluir((umCartaoDeCredito) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
                 if(instancia instanceof umListaNegra)
                     exclui = controle.excluir((umListaNegra) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
-                if(instancia instanceof umGrupos)
-                    exclui = controle.excluir((umGrupos) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
+                if(instancia instanceof umLocacao)
+                    exclui = controle.excluir((umLocacao) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
                 if(instancia instanceof umModelReserva)
                     exclui = controle.excluir((umModelReserva) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
+                if(instancia instanceof umModelLocacao)
+                    exclui = controle.excluir((umModelLocacao) lista.get(dados.getSelectedRow() == 0 ? 1 : dados.getSelectedRow()+1));
 
             if(exclui){
                 modelo.removeRow(dados.getSelectedRow());
@@ -404,6 +418,10 @@ public class Maintenance extends JFrame {
                 colunas = (String[]) lista.get(0);
             }else{
 
+                if(instancia instanceof umGrupo){
+                    umGrupo OumGrupo = (umGrupo) lista.get(i);
+                    linhas.add(getLinhaPreenchida(OumGrupo));
+                }
                 if(instancia instanceof umModelo){
                     umModelo OumModelo = (umModelo) lista.get(i);
                     linhas.add(getLinhaPreenchida(OumModelo));
@@ -436,13 +454,17 @@ public class Maintenance extends JFrame {
                     umListaNegra OumListaNegra = (umListaNegra) lista.get(i);
                     linhas.add(getLinhaPreenchida(OumListaNegra));
                 }
-                if(instancia instanceof umGrupos){
-                    umGrupos OumGrupos = (umGrupos) lista.get(i);
-                    linhas.add(getLinhaPreenchida(OumGrupos));
+                if(instancia instanceof umLocacao){
+                    umLocacao OumLocacao = (umLocacao) lista.get(i);
+                    linhas.add(getLinhaPreenchida(OumLocacao));
                 }
                 if(instancia instanceof umModelReserva){
                     umModelReserva OumModelReserva = (umModelReserva) lista.get(i);
                     linhas.add(getLinhaPreenchida(OumModelReserva));
+                }
+                if(instancia instanceof umModelLocacao){
+                    umModelLocacao OumModelLocacao = (umModelLocacao) lista.get(i);
+                    linhas.add(getLinhaPreenchida(OumModelLocacao));
                 }
 
        		}
@@ -525,6 +547,9 @@ public class Maintenance extends JFrame {
 	private Class getClasse(Object obj) {
 			Class classe = null;
 
+                if(obj instanceof umGrupo){
+                    classe = ((umGrupo)obj).getClass();
+                }
                 if(obj instanceof umModelo){
                     classe = ((umModelo)obj).getClass();
                 }
@@ -549,11 +574,14 @@ public class Maintenance extends JFrame {
                 if(obj instanceof umListaNegra){
                     classe = ((umListaNegra)obj).getClass();
                 }
-                if(obj instanceof umGrupos){
-                    classe = ((umGrupos)obj).getClass();
+                if(obj instanceof umLocacao){
+                    classe = ((umLocacao)obj).getClass();
                 }
                 if(obj instanceof umModelReserva){
                     classe = ((umModelReserva)obj).getClass();
+                }
+                if(obj instanceof umModelLocacao){
+                    classe = ((umModelLocacao)obj).getClass();
                 }
 
  		return classe;

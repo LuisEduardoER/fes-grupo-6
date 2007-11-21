@@ -1,8 +1,8 @@
 /*
  * CÓDIGO GERADO PELO RAPDIS
  * www.geti.dcc.ufrj.br
- * Data da geração 24/10/2007
- * Hora da geração 09:11 AM
+ * Data da geração 20/11/2007
+ * Hora da geração 05:16 PM
  * 
  * Nome Voce Aluga
  * E-mail Seu Email
@@ -27,6 +27,10 @@ public class umCarro{
     private String dtIniManutencao;
 
     private String dtFimManutencao;
+
+    private int modeloId;
+
+    private int filialId;
 
 
     /**
@@ -123,6 +127,46 @@ public class umCarro{
      */
     public void setDtFimManutencao(String umDtFimManutencao) {
         dtFimManutencao = umDtFimManutencao;
+    }
+
+    /**
+     * @return ModeloId
+     */
+    public int getModeloId() {
+        return modeloId;
+    }
+
+    /**
+     * @param umModeloId
+     */
+    public void setModeloId(int umModeloId) {
+        modeloId = umModeloId;
+    }
+    /**
+     * @param umModeloId
+     */
+    public void setModeloId(String umModeloId) {
+        modeloId = Integer.parseInt(umModeloId);
+    }
+
+    /**
+     * @return FilialId
+     */
+    public int getFilialId() {
+        return filialId;
+    }
+
+    /**
+     * @param umFilialId
+     */
+    public void setFilialId(int umFilialId) {
+        filialId = umFilialId;
+    }
+    /**
+     * @param umFilialId
+     */
+    public void setFilialId(String umFilialId) {
+        filialId = Integer.parseInt(umFilialId);
     }
 
 
