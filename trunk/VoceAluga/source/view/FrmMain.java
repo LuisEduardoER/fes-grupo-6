@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 import model.*;
 import controller.ControllerLocacao;
 import controller.ControllerReserva;
-import controller.ViewAlugar;
 
 public class FrmMain extends JFrame {
 
