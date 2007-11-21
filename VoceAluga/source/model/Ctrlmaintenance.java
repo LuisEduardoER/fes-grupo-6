@@ -1,8 +1,8 @@
 /*
  * CÓDIGO GERADO PELO RAPDIS
  * www.geti.dcc.ufrj.br
- * Data da geração 24/10/2007
- * Hora da geração 09:11 AM
+ * Data da geração 20/11/2007
+ * Hora da geração 05:16 PM
  * 
  * Nome Voce Aluga
  * E-mail Seu Email
@@ -17,6 +17,7 @@ import java.lang.reflect.*;
 
 import model.Maintenance;
 import model.DomainDB;
+import model.umGrupo;
 import model.umModelo;
 import model.umCarro;
 import model.umFilial;
@@ -25,8 +26,9 @@ import model.umReserva;
 import model.umCliente;
 import model.umCartaoDeCredito;
 import model.umListaNegra;
-import model.umGrupos;
+import model.umLocacao;
 import model.umModelReserva;
+import model.umModelLocacao;
 
 /**
  * Controla as interações entre o formulario da manutenção
@@ -41,6 +43,10 @@ public class Ctrlmaintenance {
         boolean result = false;
         try{
 
+                if(obj instanceof umGrupo){
+                    ((umGrupo)obj).setOid(dominio.getOid(obj));
+                    dominio.insert((umGrupo)obj, dominio.getOid(obj));
+                }
                 if(obj instanceof umModelo){
                     ((umModelo)obj).setOid(dominio.getOid(obj));
                     dominio.insert((umModelo)obj, dominio.getOid(obj));
@@ -73,13 +79,17 @@ public class Ctrlmaintenance {
                     ((umListaNegra)obj).setOid(dominio.getOid(obj));
                     dominio.insert((umListaNegra)obj, dominio.getOid(obj));
                 }
-                if(obj instanceof umGrupos){
-                    ((umGrupos)obj).setOid(dominio.getOid(obj));
-                    dominio.insert((umGrupos)obj, dominio.getOid(obj));
+                if(obj instanceof umLocacao){
+                    ((umLocacao)obj).setOid(dominio.getOid(obj));
+                    dominio.insert((umLocacao)obj, dominio.getOid(obj));
                 }
                 if(obj instanceof umModelReserva){
                     ((umModelReserva)obj).setOid(dominio.getOid(obj));
                     dominio.insert((umModelReserva)obj, dominio.getOid(obj));
+                }
+                if(obj instanceof umModelLocacao){
+                    ((umModelLocacao)obj).setOid(dominio.getOid(obj));
+                    dominio.insert((umModelLocacao)obj, dominio.getOid(obj));
                 }
 
             result = true;
@@ -93,6 +103,9 @@ public class Ctrlmaintenance {
         boolean result = false;
         try{
 
+                if(obj instanceof umGrupo){
+                    dominio.delete((umGrupo)obj);
+                }
                 if(obj instanceof umModelo){
                     dominio.delete((umModelo)obj);
                 }
@@ -117,11 +130,14 @@ public class Ctrlmaintenance {
                 if(obj instanceof umListaNegra){
                     dominio.delete((umListaNegra)obj);
                 }
-                if(obj instanceof umGrupos){
-                    dominio.delete((umGrupos)obj);
+                if(obj instanceof umLocacao){
+                    dominio.delete((umLocacao)obj);
                 }
                 if(obj instanceof umModelReserva){
                     dominio.delete((umModelReserva)obj);
+                }
+                if(obj instanceof umModelLocacao){
+                    dominio.delete((umModelLocacao)obj);
                 }
 
             result = true;
@@ -143,6 +159,9 @@ public class Ctrlmaintenance {
         Class classe = null;
         try{
 
+                if(obj instanceof umGrupo){
+                    classe = ((umGrupo)obj).getClass();
+                }
                 if(obj instanceof umModelo){
                     classe = ((umModelo)obj).getClass();
                 }
@@ -167,11 +186,14 @@ public class Ctrlmaintenance {
                 if(obj instanceof umListaNegra){
                     classe = ((umListaNegra)obj).getClass();
                 }
-                if(obj instanceof umGrupos){
-                    classe = ((umGrupos)obj).getClass();
+                if(obj instanceof umLocacao){
+                    classe = ((umLocacao)obj).getClass();
                 }
                 if(obj instanceof umModelReserva){
                     classe = ((umModelReserva)obj).getClass();
+                }
+                if(obj instanceof umModelLocacao){
+                    classe = ((umModelLocacao)obj).getClass();
                 }
 
             Method[] metodos = classe.getMethods();
@@ -190,6 +212,9 @@ public class Ctrlmaintenance {
                 }
             }
 
+                if(obj instanceof umGrupo){
+                    dominio.update((umGrupo)obj);
+                }
                 if(obj instanceof umModelo){
                     dominio.update((umModelo)obj);
                 }
@@ -214,11 +239,14 @@ public class Ctrlmaintenance {
                 if(obj instanceof umListaNegra){
                     dominio.update((umListaNegra)obj);
                 }
-                if(obj instanceof umGrupos){
-                    dominio.update((umGrupos)obj);
+                if(obj instanceof umLocacao){
+                    dominio.update((umLocacao)obj);
                 }
                 if(obj instanceof umModelReserva){
                     dominio.update((umModelReserva)obj);
+                }
+                if(obj instanceof umModelLocacao){
+                    dominio.update((umModelLocacao)obj);
                 }
 
             result = true;

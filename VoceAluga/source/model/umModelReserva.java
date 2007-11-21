@@ -1,8 +1,8 @@
 /*
  * CÓDIGO GERADO PELO RAPDIS
  * www.geti.dcc.ufrj.br
- * Data da geração 24/10/2007
- * Hora da geração 09:11 AM
+ * Data da geração 20/11/2007
+ * Hora da geração 05:16 PM
  * 
  * Nome Voce Aluga
  * E-mail Seu Email
@@ -18,7 +18,6 @@ public class umModelReserva{
      */
     private int oid;
 
-
     private String dataDeRetirada;
 
     private String dataDeDevolucao;
@@ -26,6 +25,9 @@ public class umModelReserva{
     private String grupo;
 
     private String modelo;
+
+    private String cPF;
+
 
     /**
      * Construtor dessa classe
@@ -101,6 +103,20 @@ public class umModelReserva{
      */
     public void setModelo(String umModelo) {
         modelo = umModelo;
+    }
+
+    /**
+     * @return CPF
+     */
+    public String getCPF() {
+        return cPF;
+    }
+
+    /**
+     * @param umCPF
+     */
+    public void setCPF(String umCPF) {
+        cPF = umCPF;
     }
 
 
