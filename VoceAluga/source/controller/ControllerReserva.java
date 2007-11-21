@@ -133,7 +133,7 @@ public class ControllerReserva implements ActionListener, CaretListener, FocusLi
 		amanha.setTime(agora.getTime() + 1000 * 60 * 60 * 24);
 		
         // TODO: Pegar a filial do usuário logado. O sistema atual não implementa login
-		for (umGrupo g : modelReserva.getListaGruposDisponíveis(1))
+		for (umGrupo g : modelReserva.getListaGruposDisponíveis(1, viewReserva.getCampoDataRetirada().getText(), viewReserva.getCampoDataDevolucao().getText() ))
 		{
 			viewReserva.getCampoGrupo().addItem(g.getGrupoNome());
 		}
@@ -275,7 +275,7 @@ public class ControllerReserva implements ActionListener, CaretListener, FocusLi
 			/*
 			 * Colocar aqui código para escolher um carro do grupo escolhido para ser reservado
 			 */
-			List<umCarro> l = modelReserva.getListaCarrosDisponiveis("EU Rent Matriz", (String)viewReserva.getCampoGrupo().getSelectedItem());
+			List<umCarro> l = modelReserva.getListaCarrosDisponiveis("EU Rent Matriz", (String)viewReserva.getCampoGrupo().getSelectedItem(), viewReserva.getCampoDataRetirada().getText(), viewReserva.getCampoDataDevolucao().getText() );
 			
 			modelReserva.registrarReserva(viewReserva.getCampoCPF().getText(),
 					l.get(0),				 
